@@ -68,7 +68,7 @@ module Celluloid
       severity ||= UNKNOWN
 
       if severity < @level
-        return event.id
+        return nil
       end
 
       if message.nil? && !block_given?
