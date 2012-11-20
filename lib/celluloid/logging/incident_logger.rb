@@ -78,7 +78,7 @@ module Celluloid
 
       event = LogEvent.new(severity, message, progname, &block)
 
-      @buffers[progname][severity] << event
+      buffer_for(progname, severity) << event
 
       if severity >= @threshold
         begin
@@ -124,6 +124,15 @@ module Celluloid
 
     def incident_topic
       "log.incident.#{@progname}"
+    end
+
+    #TODO 1.9 syntax allowed?
+    def buffer_for(progname=nil, severity)
+      @buffers[progname || @progname][severity]
+    end
+
+    def buffers_for(progname)
+      @buffers[progname]
     end
   end
 end
