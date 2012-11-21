@@ -126,7 +126,6 @@ module Celluloid
       "log.incident.#{@progname}"
     end
 
-    #TODO 1.9 syntax allowed?
     def buffer_for(progname=nil, severity)
       @buffers[progname || @progname][severity]
     end
